@@ -49,7 +49,7 @@ function subwayRider() {
 
     if (_.intersection(startTrain.stations, stopTrain.stations).length == startTrain.stations.length) {
       alert("Your trip has " + startTrain.distance(startStation, stopStation) + " stops. That is "
-        + journeys + " trips so far and your total cost has been $" + price + ".");
+      + journeys + " trips so far and your total cost has been $" + price + ".");
     } else {
       intersection = _.intersection(startTrain.stations, stopTrain.stations)[0];
       alert("Your trip has " + (parseInt(startTrain.distance(startStation, intersection), 10)
