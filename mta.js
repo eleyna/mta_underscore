@@ -28,24 +28,33 @@ function subwayRider() {
 
   return function() {
     // Get the start train from the user.
-    var startTrain = prompt("What is your start train?\n" + _.map(trains, function(train) {return train.name;}).join("\n"));
-    startTrain = _.reject((_.map(trains, function(train) {if (train.name == startTrain) {return train;} else {return 0;}})), function (num) {return num === 0;})[0];
+    var startTrain = prompt("What is your start train?\n" +
+      _.map(trains, function(train) {return train.name;}).join("\n"));
+    startTrain = _.reject((_.map(trains,
+      function(train) {if (train.name == startTrain) {return train;} else {return 0;}})),
+      function (num) {return num === 0;})[0];
 
     // Get the start station from the user.
     var startStation = prompt("What is your start station?\n" + startTrain.stations.join("\n"));
 
     // Get the stop train from the user.
-    var stopTrain = prompt("What is your stop train?\n" + _.map(trains, function(train) {return train.name;}).join("\n"));
-    stopTrain = _.reject((_.map(trains, function(train) {if (train.name == stopTrain) {return train;} else {return 0;}})), function (num) {return num === 0;})[0];
+    var stopTrain = prompt("What is your stop train?\n" + _.map(trains,
+      function(train) {return train.name;}).join("\n"));
+    stopTrain = _.reject((_.map(trains, function(train)
+      {if (train.name == stopTrain) {return train;} else {return 0;}})),
+      function (num) {return num === 0;})[0];
 
     // Get the stop station from the user.
     var stopStation = prompt("What is your stop station?\n" + stopTrain.stations.join("\n"));
 
     if (_.intersection(startTrain.stations, stopTrain.stations).length == startTrain.stations.length) {
-      alert("Your trip has " + startTrain.distance(startStation, stopStation) + " stops. That is " + journeys + " trips so far and your total cost has been $" + price + ".");
+      alert("Your trip has " + startTrain.distance(startStation, stopStation) + " stops. That is "
+        + journeys + " trips so far and your total cost has been $" + price + ".");
     } else {
       intersection = _.intersection(startTrain.stations, stopTrain.stations)[0];
-      alert("Your trip has " + (parseInt(startTrain.distance(startStation, intersection), 10) + parseInt(startTrain.distance(intersection, stopStation), 10) + " stops. That is " + journeys + " trips so far and your total cost has been $" + price + "."));
+      alert("Your trip has " + (parseInt(startTrain.distance(startStation, intersection), 10)
+        + parseInt(startTrain.distance(intersection, stopStation), 10) + " stops. That is "
+        + journeys + " trips so far and your total cost has been $" + price + "."));
     }
     journeys++;
     price += 2.50;
