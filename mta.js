@@ -42,10 +42,10 @@ function subwayRider() {
     var stopStation = prompt("What is your stop station?\n" + stopTrain.stations.join("\n"));
 
     if (_.intersection(startTrain.stations, stopTrain.stations).length == startTrain.stations.length) {
-      alert("Your trip has " + startTrain.distance(startStation, stopStation + "stops."));
+      alert("Your trip has " + startTrain.distance(startStation, stopStation) + " stops. That is " + journeys + " trips so far and your total cost has been $" + price + ".");
     } else {
       intersection = _.intersection(startTrain.stations, stopTrain.stations)[0];
-      alert("Your trip has " + (parseInt(startTrain.distance(startStation, intersection), 10) + parseInt(startTrain.distance(intersection, stopStation), 10) + " stops. That is " + journeys + " trips so far and your total cost has been $" + parseFloat(price) + "."));
+      alert("Your trip has " + (parseInt(startTrain.distance(startStation, intersection), 10) + parseInt(startTrain.distance(intersection, stopStation), 10) + " stops. That is " + journeys + " trips so far and your total cost has been $" + price + "."));
     }
     journeys++;
     price += 2.50;
